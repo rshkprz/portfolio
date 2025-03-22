@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/profile.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Rashik Prajapati</title>
+</head>
+
+<body class="bg-zinc-900 text-white flex justify-center p-2 min-h-screen">
+    <div class="w-full max-w-xl flex flex-col justify-center">
+        <!-- header -->
+        <header>
+            <button id="themeToggle" class="absolute top-[1rem] right-[2rem] text-2xl">
+                <i id="themeIcon" class="ri-sun-line"></i>
+            </button>
+            <div class="flex items-center justify-center space-x-[1rem] sm:space-x-[3rem] mt-10">
+                <img src="img/profile.png" alt="Profile Picture"
+                    class="ml-2 rounded-full h-[9rem] bg-blue-300 outline outline-offset-4 outline-sky-500">
+                <div>
+                    <div class="flex-col py-2">
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-xl font-bold ">Rashik Prajapati</h2>
+                            <i class="ri-verified-badge-fill"></i>
+                        </div>
+                        <h3 class="text-md font-medium text-zinc-400">Computer Engineering Student</h3>
+                    </div>
+                    <div class="text-2xl">
+                        <a href="https://www.instagram.com/rashik_prajapati" target="_blank"
+                            class="hover:text-blue-500">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://twitter.com/rshkprz" target="_blank" class="hover:text-blue-500">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rashik-prajapati/" target="_blank"
+                            class="hover:text-blue-500">
+                            <i class="ri-linkedin-box-line"></i>
+                        </a>
+                        <a href="https://github.com/rshkprz" target="_blank" class="hover:text-blue-500">
+                            <i class="ri-github-line"></i>
+                        </a>
+                        <a href="mailto:rshkprjpt@gmail.com" target="_blank" class="hover:text-blue-500">
+                            <i class="ri-mail-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- project section -->
+        <section class="flex flex-col items-center justify-center space-y-5 mt-10">
+            <div class="flex items-start w-full">
+                <h2 class="text-2xl font-bold">Projects</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                <!-- project 1 -->
+                <div class="card rounded-lg bg-zinc-800 p-5 shadow-lg transition-all hover:scale-105 ">
+                    <h4 class="text-lg font-semibold">Lipyantrak</h4>
+                    <p class="text-sm text-zinc-400">An automatic speech recognition system for Nepali speech to text
+                        transcription using Wav2Vec2 model.</p>
+                    <a href="https://github.com/rshkprz/lipyantrak" target="_blank"
+                        class="mt-2 inline-block text-blue-500 hover:underline">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card rounded-lg bg-zinc-800 p-5 shadow-lg transition-all hover:scale-105 ">
+                    <h4 class="text-lg font-semibold">Academy Web</h4>
+                    <p class="text-sm text-zinc-400">A marketplace plus learning platform for programming courses.</p>
+                    <a href="https://github.com/rshkprz/academy-web" target="_blank"
+                        class="mt-2 inline-block text-blue-500 hover:underline">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card rounded-lg bg-zinc-800 p-5 shadow-xl transition-all hover:scale-105 ">
+                    <h4 class="text-lg font-semibold">ATM</h4>
+                    <p class="text-sm text-zinc-400">A CLI based ATM system built with C++.</p>
+                    <a href="https://github.com/rshkprz/atm" target="_blank"
+                        class="mt-2 inline-block text-blue-500 hover:underline">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="card rounded-lg bg-zinc-800 p-5 shadow-lg transition-all hover:scale-105 ">
+                    <h4 class="text-lg font-semibold">Image rotator</h4>
+                    <p class="text-sm text-zinc-400">A chrome extension for rotating images in facebook messenger.</p>
+                    <a href="https://github.com/rshkprz/image-rotator" target="_blank"
+                        class="mt-2 inline-block text-blue-500 hover:underline">
+                        View Project →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <footer class="mt-auto w-full text-center  ">
+            <p class="text-zinc-500">&copy; <span id="year"></span> All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const currentTheme = localStorage.getItem('theme');
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.remove('bg-zinc-900', 'text-white');
+                document.body.classList.add('bg-stone-200', 'text-black');
+
+                document.querySelectorAll('.card').forEach(card => {
+                    card.classList.remove('bg-zinc-800');
+                    card.classList.add('bg-zinc-100');
+                });
+
+                document.querySelectorAll('p').forEach(p => {
+                    p.classList.add('text-zinc-700');
+                });
+
+                document.querySelectorAll('h3').forEach(h3 => {
+                    h3.classList.replace('text-zinc-400', 'text-zinc-500');
+                });
+
+                themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+            } else {
+                document.body.classList.remove('bg-stone-200', 'text-black');
+                document.body.classList.add('bg-zinc-900', 'text-white');
+
+                document.querySelectorAll('.card').forEach(card => {
+                    card.classList.remove('bg-zinc-100');
+                    card.classList.add('bg-zinc-800');
+                });
+
+                document.querySelectorAll('p').forEach(p => {
+                    p.classList.remove('text-zinc-700');
+                });
+
+                document.querySelectorAll('h3').forEach(h3 => {
+                    h3.classList.replace('text-zinc-500', 'text-zinc-400');
+                });
+
+                themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+            }
+        }
+
+        // Apply saved theme or default to dark mode
+        applyTheme(currentTheme || 'dark');
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', function () {
+            const newTheme = document.body.classList.contains('bg-zinc-900') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    });
+</script>
+
+</html>
